@@ -1,0 +1,122 @@
+#include <stdio.h>
+int main() { int a, b; printf("Введіть два числа: "); scanf("%d %d", &a, &b);
+// Використання оператора "?"
+(a > b) ? printf("Більше: %d\n", a) : printf("Більше: %d\n", b);
+
+return 0;
+}
+
+
+
+#include <stdio.h>
+int main() { int a, b, c;
+printf("Введіть 3 строни: ");
+scanf("%d %d %d", &a, &b, &c);
+
+if (a + b > c && a + c > b && b + c > a) {
+    
+    if (a == b && b == c) {
+        printf("Рівносоторонній. ");
+    } else if (a == b || a == c || b == c) {
+        printf("Рівносоторонній. ");
+    } else {
+        printf("Рівносоторонній. ");
+    }
+
+    if (a*a == b*b + c*c) {
+        printf("Прямокутний.\n");
+    } else if (b*b == a*a + c*c) {
+        printf("Прямокутний.\n");
+    } else if (c*c == a*a + b*b) {
+        printf("Прямокутний.\n");
+    } 
+    else if (a*a > b*b + c*c && a >= b && a >= c) {
+        printf("Тупокутний.\n");
+    } else if (b*b > a*a + c*c && b >= a && b >= c) {
+        printf("Тупокутний.\n");
+    } else if (c*c > a*a + b*b && c >= a && c >= b) {
+        printf("Тупокутний.\n");
+    } 
+    else {
+        printf("Гостокутний.\n");
+    }
+
+} else {
+    printf("Такого трикутника не існує!\n");
+}
+
+return 0;
+}
+
+
+
+
+#include <stdio.h>
+int main() { int num; printf("Введіть тризначне число (100-999): "); scanf("%d", &num);
+if (num < 100 || num > 999) {
+    printf("Помилка! Потрібно ввести тризначне число.\n");
+    return 1;
+}
+
+int hund = num / 100;       // Сотні
+int tens = (num / 10) % 10; // Десятки
+int ones = num % 10;        // Одиниці
+
+// 1. Виводимо сотні (звичайний switch)
+switch (hund) {
+    case 1: printf("Сто "); break;
+    case 2: printf("Двісті "); break;
+    case 3: printf("Триста "); break;
+    case 4: printf("Чотириста "); break;
+    case 5: printf("П'ятсот "); break;
+    case 6: printf("Шістсот "); break;
+    case 7: printf("Сімсот "); break;
+    case 8: printf("Вісімсот "); break;
+    case 9: printf("Дев'ятсот "); break;
+}
+
+// 2. ВКЛАДЕНИЙ SWITCH для десятків та одиниць
+switch (tens) {
+    case 1: // Якщо десяток 1 (від 10 до 19)
+        switch (ones) {
+            case 0: printf("десять\n"); break;
+            case 1: printf("одинадцять\n"); break;
+            case 2: printf("дванадцять\n"); break;
+            case 3: printf("тринадцять\n"); break;
+            case 4: printf("чотирнадцять\n"); break;
+            case 5: printf("п'ятнадцять\n"); break;
+            case 6: printf("шістнадцять\n"); break;
+            case 7: printf("сімнадцять\n"); break;
+            case 8: printf("вісімнадцять\n"); break;
+            case 9: printf("дев'ятнадцять\n"); break;
+        }
+        break;
+        
+    case 2: printf("двадцять "); break;
+    case 3: printf("тридцять "); break;
+    case 4: printf("сорок "); break;
+    case 5: printf("п'ятдесят "); break;
+    case 6: printf("шістдесят "); break;
+    case 7: printf("сімдесят "); break;
+    case 8: printf("вісімдесят "); break;
+    case 9: printf("дев'яносто "); break;
+}
+
+// 3. Виводимо одиниці (тільки якщо десяток не дорівнює 1)
+if (tens != 1) {
+    switch (ones) {
+        case 1: printf("один\n"); break;
+        case 2: printf("два\n"); break;
+        case 3: printf("три\n"); break;
+        case 4: printf("чотири\n"); break;
+        case 5: printf("п'ять\n"); break;
+        case 6: printf("шість\n"); break;
+        case 7: printf("сім\n"); break;
+        case 8: printf("вісім\n"); break;
+        case 9: printf("дев'ять\n"); break;
+        case 0: printf("\n"); break; // Якщо число кругле, наприклад 340
+    }
+}
+
+return 0;
+}
